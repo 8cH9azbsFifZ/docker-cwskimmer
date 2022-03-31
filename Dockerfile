@@ -57,8 +57,8 @@ FROM installation as config
 # XFCE config
 ADD ./config/xfce4 /root/.config/xfce4
 # Add startup stuff
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ADD startup.sh /bin
+ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD ./config/startup.sh /bin
 
 # Configuration stuff
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv"
