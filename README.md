@@ -1,4 +1,4 @@
-Run CW Skimmer under docker.
+Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 
 **WIP**
 
