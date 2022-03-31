@@ -1,6 +1,10 @@
 FROM debian:buster AS wine
 MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
 
+# Configuration variables
+ENV IP_HERMES "192.168.111.222"
+ENV CALLSIGN "CW0SKIM"
+
 
 # Install Wine, XFCE, network audio stuff
 ENV HOME /root
@@ -48,9 +52,6 @@ ADD ./config/xfce4 /root/.config/xfce4
 # Add startup stuff
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD startup.sh /bin
-
-# Configuration Variables
-ENV IP_HERMES "192.168.111.222"
 
 # Configuration stuff
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv"
