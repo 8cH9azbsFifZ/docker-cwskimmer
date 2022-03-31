@@ -1,10 +1,15 @@
 VER=0.6
 
+# Must be LOWERCASE
+USER=8ch9azbsfifz
+REPO=docker-cwskimmer
+TAG=docker.pkg.github.com/${USER}/${REPO}/cwskimmer
+
 build:
-	docker build . -t cwskimmer:${VER} -t t20:5000/cwskimmer:${VER}
+	docker build . -t ${TAG}:${VER} -t ${TAG}:latest
 
 run:
-	docker run --rm -it -p 8080:8080 cwskimmer:${VER}
+	docker run --rm -it -p 8080:8080 ${TAG}:${VER}
 
 push:
-	docker push t20:5000/cwskimmer:${VER}
+	docker push ${TAG}:${VER}
