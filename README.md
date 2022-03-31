@@ -1,22 +1,13 @@
 Run CW Skimmer under docker.
 
+**WIP**
+
 # How to use
 + `make build`
 + `make run`
 + `open http://127.0.0.1:8080`
 
 # Configuration
-
-## Hermes DLL
-+ Setup IP: HermesIntf_.dll e.g. HermesIntf_192.168.111.222.dll
-
-
-# Initial installation
-
-## Get Aggregator 
-+ Get latest aggreagator
-+ Move binaries to lib
-+ Adjust startup on demant
 
 
 # References
