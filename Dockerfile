@@ -46,29 +46,41 @@ ENV V_SKIMMER 2.1
 ENV V_SKIMMERSRV 1.6
 ENV V_RBNAGGREGATOR 6.3
 
-# Copy installation files
+RUN apt-get -y install innoextract
+
+# Copy installation files and extract them
 ADD install /install
-# Copy Raw binaries (extracted from installations)
-RUN mkdir /app
-ADD lib /app
+WORKDIR /skimmer_1.9
+RUN  unzip /install/Skimmer_1.9/CwSkimmer.zip && innoextract Setup.exe
+WORKDIR /skimmer_2.1
+RUN unzip /install/Skimmer_2.1/CwSkimmer.zip && innoextract Setup.exe
+WORKDIR /skimmersrv_1.6
+RUN unzip /install/SkimmerSrv_1.6/SkimSrv.zip && innoextract Setup.exe
+WORKDIR /rbnaggregator_6.3
+RUN unzip "/install/RBNAggregator/Aggregator v6.3.zip"
+WORKDIR /HermesDLL_21.7.18
+RUN unzip /install/HermesDLL/HermesIntf-21.7.18.zip
+
+WORKDIR /root/
 
 
 FROM installation as config
 # FIXME: config vars here -e RIGSERVER=10.101.1.53 -e RIGSERVER_CAT_PORT=1234 -e RIGSERVER_PTT_PORT=4321 
 
 # XFCE config
-#ADD ./config/xfce4 /root/.config/xfce4
+ADD ./config/xfce4 /root/.config/xfce4
 # Add startup stuff
 ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./config/startup.sh /bin
 
 # Configuration stuff
-ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv"
-RUN mkdir -p ${PATH_INI_SKIMSRV}
-COPY ./config/rbn/Aggregator.ini /app/RBN
-COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
-COPY ./lib/HermesIntf-${V_HERMES}/HermesIntf.dll /app/SkimSrv/HermesIntf_${IP_HERMES}.dll
-COPY ./lib/HermesIntf-${V_HERMES}/HermesIntf.dll /app/Afreet/CwSkimmer/HermesIntf_${IP_HERMES}.dll
+ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
+ENV PATH_INI_AGGREGATOR "//rbnaggregator_6.3/Aggregator.ini"
+#RUN mkdir -p ${PATH_INI_SKIMSRV}
+#COPY ./config/rbn/Aggregator.ini /app/RBN
+#COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
+#COPY /HermesDLL_21.7.18/HermesIntf-${V_HERMES}/HermesIntf.dll /app/SkimSrv/HermesIntf_${IP_HERMES}.dll
+#COPY /HermesDLL_21.7.18/HermesIntf-${V_HERMES}/HermesIntf.dll /app/Afreet/CwSkimmer/HermesIntf_${IP_HERMES}.dll
 
 
 
