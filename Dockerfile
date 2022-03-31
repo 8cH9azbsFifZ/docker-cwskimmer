@@ -5,7 +5,6 @@ MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
 ENV IP_HERMES "192.168.111.222"
 ENV CALLSIGN "CW0SKIM"
 
-
 # Install Wine, XFCE, network audio stuff
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
@@ -31,14 +30,22 @@ RUN winetricks -q dotnet46
 
 
 FROM wine AS novnc
+ENV V_NOVNC 1.1.0
+ENV V_WEBSOCKIFY 0.9.0
 # Install noVNC stuff
 WORKDIR /root/
-RUN wget -O - https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-1.1.0 /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html
-RUN wget -O - https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar -xzv -C /root/ && mv /root/websockify-0.9.0 /root/novnc/utils/websockify
+RUN wget -O - https://github.com/novnc/noVNC/archive/v${V_NOVNC}.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-${V_NOVNC} /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html
+RUN wget -O - https://github.com/novnc/websockify/archive/v${V_WEBSOCKIFY}.tar.gz | tar -xzv -C /root/ && mv /root/websockify-${V_WEBSOCKIFY} /root/novnc/utils/websockify
+# Configure window title
 RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /root/novnc/tmp.html && cat /root/novnc/tmp.html > /root/novnc/vnc_lite.html && rm /root/novnc/tmp.html
 
 
 FROM novnc AS installation
+ENV V_HERMES 21.7.18
+ENV V_SKIMMER 2.1
+ENV V_SKIMMERSRV 1.6
+ENV V_RBNAGGREGATOR 6.3
+
 # Copy installation files
 ADD install /install
 # Copy Raw binaries (extracted from installations)
@@ -58,8 +65,8 @@ ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/
 RUN mkdir -p ${PATH_INI_SKIMSRV}
 COPY ./config/rbn/Aggregator.ini /app/RBN
 COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
-COPY ./lib/HermesIntf-21.7.18/HermesIntf.dll /app/SkimSrv/HermesIntf_${IP_HERMES}.dll
-COPY ./lib/HermesIntf-21.7.18/HermesIntf.dll /app/Afreet/CwSkimmer/HermesIntf_${IP_HERMES}.dll
+COPY ./lib/HermesIntf-${V_HERMES}/HermesIntf.dll /app/SkimSrv/HermesIntf_${IP_HERMES}.dll
+COPY ./lib/HermesIntf-${V_HERMES}/HermesIntf.dll /app/Afreet/CwSkimmer/HermesIntf_${IP_HERMES}.dll
 
 
 

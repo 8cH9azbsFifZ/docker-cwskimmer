@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e 
 
+## Disabled: support for network sound
+
 #echo "Start sink for CAT port"
 #socat PTY,link=/dev/cat TCP:$RIGSERVER:$RIGSERVER_CAT_PORT &
 #socat PTY,link=/dev/ptt TCP:$RIGSERVER:$RIGSERVER_PTT_PORT &
