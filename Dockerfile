@@ -16,7 +16,6 @@ RUN echo deb https://dl.winehq.org/wine-builds/debian/ buster main >>  /etc/apt/
 RUN apt-get -y install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386
 #RUN apt install --install-recommends winehq-stable
 RUN apt-get -y install wine
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
 # cf. https://wiki.winehq.org/Debian
 ENV WINEPREFIX /root/prefix32
@@ -32,10 +31,12 @@ RUN wget -O - https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar -x
 # Install Audio stuff
 RUN apt-get -y install socat
 RUN apt-get -y install pulseaudio pavucontrol
-#RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
-
 #RUN apt-get -y install python-pip
 #RUN pip install -U pywinauto
+#RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
+
+# XFCE WM
+RUN apt-get -y install xfce4
 
 
 # Install CW Skimmer stuff
@@ -43,12 +44,14 @@ ADD install /install
 #RUN mkdir -p /install
 #RUN wget http://dxatlas.com/CwSkimmer/Files/CwSkimmer.zip -O /install/CwSkimmer.zip
 RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /root/novnc/tmp.html && cat /root/novnc/tmp.html > /root/novnc/vnc_lite.html && rm /root/novnc/tmp.html
-# Get Aggregator from http://www.reversebeacon.net/pages/Aggregator+34
+
+# Copy Raw binaries (extracted from installations)
+RUN mkdir /app
+ADD lib /app
 
 
-# Install Hermes Driver
-COPY ./install/HermesIntf-21.7.18/HermesIntf.dll /install/Afreet/CwSkimmer
-
+# XFCE config
+ADD ./config/xfce4 /root/.config/xfce4
 
 # Add startup stuff
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf

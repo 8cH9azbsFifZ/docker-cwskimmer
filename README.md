@@ -11,9 +11,18 @@ Run CW Skimmer under docker.
 + Setup IP: HermesIntf_.dll e.g. HermesIntf_192.168.111.222.dll
 
 
+# Initial installation
+
+## Get Aggregator 
++ Get latest aggreagator
++ Move binaries to lib
++ Adjust startup on demant
+
+
 # References
 + https://sm7iun.se/redpitaya/cwskimmer/
 + https://github.com/k3it/HermesIntf/releases/tag/v21.7.18
++ http://www.reversebeacon.net/pages/Aggregator+34
 
 # History
 - v0.2 - builds again, audio not working again

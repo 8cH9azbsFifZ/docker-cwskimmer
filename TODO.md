@@ -1,0 +1,1 @@
++ .config/xfce default config
