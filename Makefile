@@ -1,4 +1,4 @@
-VER=0.5
+VER=0.6
 
 build:
 	docker build . -t cwskimmer:${VER} -t t20:5000/cwskimmer:${VER}

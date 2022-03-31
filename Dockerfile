@@ -49,6 +49,14 @@ RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /
 RUN mkdir /app
 ADD lib /app
 
+# Contrib enable
+RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list
+RUN apt-get update && apt-get -y install winetricks
+
+# Deps for RBNAggregator
+#R dotnet45
+#RUN winetricks -q msxml4 msxml6 corefonts vcrun2010 vcrun2013 vcrun2017 dotnet46
+RUN winetricks -q dotnet46
 
 # XFCE config
 ADD ./config/xfce4 /root/.config/xfce4
