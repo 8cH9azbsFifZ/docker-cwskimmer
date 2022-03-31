@@ -54,8 +54,10 @@ ADD lib /app
 
 
 FROM installation as config
+# FIXME: config vars here -e RIGSERVER=10.101.1.53 -e RIGSERVER_CAT_PORT=1234 -e RIGSERVER_PTT_PORT=4321 
+
 # XFCE config
-ADD ./config/xfce4 /root/.config/xfce4
+#ADD ./config/xfce4 /root/.config/xfce4
 # Add startup stuff
 ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./config/startup.sh /bin
