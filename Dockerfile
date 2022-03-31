@@ -46,6 +46,9 @@ RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /
 # Get Aggregator from http://www.reversebeacon.net/pages/Aggregator+34
 
 
+# Install Hermes Driver
+COPY ./install/HermesIntf-21.7.18/HermesIntf.dll /install/Afreet/CwSkimmer
+
 
 # Add startup stuff
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
