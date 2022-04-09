@@ -1,4 +1,4 @@
-VER=0.6
+VER=0.7
 
 # Must be LOWERCASE
 USER=8ch9azbsfifz
