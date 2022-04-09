@@ -1,5 +1,5 @@
 #!/bin/bash
-set d-e 
+#set d-e 
 
 echo "Configure Skimmer with Callsign: $CALLSIGN and QTH: $QTH using $PATH_INI_SKIMSRV"
 sed -i 's/Call=/Call='$CALLSIGN'/g' "$PATH_INI_SKIMSRV"
