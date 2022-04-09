@@ -9,7 +9,7 @@ build:
 	docker build . -t ${TAG}:${VER} -t ${TAG}:latest
 
 run:
-	docker run --rm -it -p 8080:8080 ${TAG}:${VER}
+	docker run --rm -it -p 8080:8080 -p 7301:7300 ${TAG}:${VER}
 
 push:
 	docker push ${TAG}:${VER}

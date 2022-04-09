@@ -88,6 +88,8 @@ ENV NAME "Mr. X"
 ENV SQUARE KA12aa
 
 EXPOSE 8080
+EXPOSE 7301
+
 ENTRYPOINT ["startup.sh"]
 CMD ["/usr/bin/supervisord"]
 
