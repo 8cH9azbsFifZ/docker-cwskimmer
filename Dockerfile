@@ -74,13 +74,17 @@ ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./config/startup.sh /bin
 
 # Configuration stuff
+ENV IP_HERMES "10.101.2.21"
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
 ENV PATH_INI_AGGREGATOR "//rbnaggregator_6.3/Aggregator.ini"
-#RUN mkdir -p ${PATH_INI_SKIMSRV}
+RUN mkdir -p ${PATH_INI_SKIMSRV}
 #COPY ./config/rbn/Aggregator.ini /app/RBN
-#COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
-#COPY /HermesDLL_21.7.18/HermesIntf-${V_HERMES}/HermesIntf.dll /app/SkimSrv/HermesIntf_${IP_HERMES}.dll
+COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
+RUN cp /HermesDLL_21.7.18/HermesIntf.dll /skimmersrv_1.6/app/HermesIntf_${IP_HERMES}.dll
+RUN rm /skimmersrv_1.6/app/Qs1rIntf.dll
 #COPY /HermesDLL_21.7.18/HermesIntf-${V_HERMES}/HermesIntf.dll /app/Afreet/CwSkimmer/HermesIntf_${IP_HERMES}.dll
+
+
 
 
 
