@@ -1,9 +1,14 @@
 #!/bin/bash
-#set d-e 
+#set d -e 
 
-echo "Configure Skimmer with Callsign: $CALLSIGN and QTH: $QTH using $PATH_INI_SKIMSRV"
+echo "Configure Skimmer with Callsign: $CALLSIGN, QTH: $QTH, Name: $Name, Grid: $SQUARE using $PATH_INI_SKIMSRV"
 sed -i 's/Call=/Call='$CALLSIGN'/g' "$PATH_INI_SKIMSRV"
 sed -i 's/QTH=/QTH='$QTH'/g' "$PATH_INI_SKIMSRV"
+sed -i 's/Name=/Name='$NAME'/g' "$PATH_INI_SKIMSRV"
+sed -i 's/Square=/Square='$SQUARE'/g' "$PATH_INI_SKIMSRV"
+
+echo "Configure RBN Aggregator with Callsign: $CALLSIGN using $PATH_INI_AGGREGATOR"
+sed -i 's/Skimmer Call=/Skimmer Call='$CALLSIGN'/g' "$PATH_INI_AGGREGATOR"
 
 
 ## Disabled: support for network sound

@@ -75,15 +75,17 @@ ADD ./config/startup.sh /bin
 
 # Configuration stuff
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
-ENV PATH_INI_AGGREGATOR "//rbnaggregator_6.3/Aggregator.ini"
+ENV PATH_INI_AGGREGATOR "/rbnaggregator_6.3/Aggregator.ini"
 RUN mkdir -p $(dirname ${PATH_INI_SKIMSRV})
-#COPY ./config/rbn/Aggregator.ini /app/RBN
+COPY ./config/rbn/Aggregator.ini /app/RBN
 COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
 #RUN cp /HermesDLL_21.7.18/HermesIntf.dll /skimmersrv_1.6/app/HermesIntf_${IP_HERMES}.dll
 RUN cp /HermesDLL_21.7.18/HermesIntf.dll /skimmersrv_1.6/app/
 RUN rm /skimmersrv_1.6/app/Qs1rIntf.dll
 
 ENV QTH KA12aa
+ENV NAME "Mr. X"
+ENV SQUARE KA12aa
 
 EXPOSE 8080
 ENTRYPOINT ["startup.sh"]
