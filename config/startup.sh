@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e 
 
+echo "Configure Skimmer with Callsign: $CALLSIGN and QTH: $QTH using $PATH_INI_SKIMSRV"
+sed -i 's/Call=/Call='$CALLSIGN'/g' $PATH_INI_SKIMSRV
+sed -i 's/QTH=/QTH='$QTH'/g' $PATH_INI_SKIMSRV
+
+
 ## Disabled: support for network sound
 
 #echo "Start sink for CAT port"
