@@ -2,9 +2,3 @@ app:
     build: .
     ports:
         - 8080:8080
-    environment: 
-        RIGSERVER: 10.101.1.53
-        RIGSERVER_CAT_PORT: 1234
-        RIGSERVER_PTT_PORT: 4321
-    #volumes: 
-    #- cwskimmer:/root/prefix32
