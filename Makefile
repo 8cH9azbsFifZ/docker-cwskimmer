@@ -13,3 +13,6 @@ run:
 
 push:
 	docker push ${TAG}:${VER}
+
+update_patt3ch:
+	wget http://www.reversebeacon.net/downloads/patt3ch/patt3ch.lst -O ./install/patt3ch/patt3ch.lst
