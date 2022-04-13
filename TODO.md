@@ -1,5 +1,6 @@
 
-+ simplify docker file (version numbers and co)
++ simplify docker file 
++ variable logfiles in supervisord
+
 + upload image to github
 
-+ .config/xfce default config

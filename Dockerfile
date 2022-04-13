@@ -91,8 +91,13 @@ ENV SQUARE KA12aa
 ENV LOGFILE_HERMES /root/HermesIntf_log_file.txt
 ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
 
+# Install frontail
+RUN apt-get -y install npm
+RUN npm i frontail -g
+
 EXPOSE 8080
 EXPOSE 7301
+EXPOSE 9001
 
 ENTRYPOINT ["startup.sh"]
 CMD ["/usr/bin/supervisord"]
