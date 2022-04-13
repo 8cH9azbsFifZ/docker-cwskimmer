@@ -76,6 +76,7 @@ ADD ./config/xfce4 /root/.config/xfce4
 # Add startup stuff
 ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./config/startup.sh /bin
+ADD ./config/startup_sound.sh /bin
 
 # Configuration stuff
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
@@ -94,7 +95,6 @@ ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
 ENV QTH KA12aa
 ENV NAME "Mr. X"
 ENV SQUARE KA12aa
-
 
 
 EXPOSE 8080
