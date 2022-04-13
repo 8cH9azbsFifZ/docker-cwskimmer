@@ -46,4 +46,11 @@ sed -i 's/1\.6/'$V_SKIMMERSRV'/g' /etc/supervisor/conf.d/supervisord.conf
 
 #sleep 5
 
+echo "Start using logfiles $LOGFILE_HERMES and $LOGIFLE_AGGREGATOR"
+touch $LOGFILE_HERMES
+touch $LOGIFLE_AGGREGATOR
+
+tail -f $LOGFILE_HERMES $LOGIFLE_AGGREGATOR &
+
+
 exec "$@"

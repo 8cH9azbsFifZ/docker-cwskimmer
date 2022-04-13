@@ -88,6 +88,9 @@ ENV QTH KA12aa
 ENV NAME "Mr. X"
 ENV SQUARE KA12aa
 
+ENV LOGFILE_HERMES /root/HermesIntf_log_file.txt
+ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
+
 EXPOSE 8080
 EXPOSE 7301
 
