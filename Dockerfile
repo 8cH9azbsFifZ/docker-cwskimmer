@@ -82,6 +82,7 @@ COPY ./config/rbn/Aggregator.ini ${PATH_INI_AGGREGATOR}
 COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
 RUN cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/
 RUN rm /skimmersrv_${V_SKIMMERSRV}/app/Qs1rIntf.dll
+COPY ./install/patt3ch/patt3ch.lst /skimmersrv_${V_SKIMMERSRV}/userappdata/Afreet/Reference/Patt3Ch.lst
 
 ENV QTH KA12aa
 ENV NAME "Mr. X"
