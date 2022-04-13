@@ -45,6 +45,7 @@ ENV V_HERMES 21.7.18
 ENV V_SKIMMER 2.1
 ENV V_SKIMMERSRV 1.6
 ENV V_RBNAGGREGATOR 6.3
+#ENV DIR_SKIMMERSRV /skimmersrv_${V_SKIMMERSRV}/app
 
 RUN apt-get -y install innoextract
 
@@ -52,14 +53,14 @@ RUN apt-get -y install innoextract
 ADD install /install
 WORKDIR /skimmer_1.9
 RUN  unzip /install/Skimmer_1.9/CwSkimmer.zip && innoextract Setup.exe
-WORKDIR /skimmer_2.1
-RUN unzip /install/Skimmer_2.1/CwSkimmer.zip && innoextract Setup.exe
-WORKDIR /skimmersrv_1.6
-RUN unzip /install/SkimmerSrv_1.6/SkimSrv.zip && innoextract Setup.exe
-WORKDIR /rbnaggregator_6.3
-RUN unzip "/install/RBNAggregator/Aggregator v6.3.zip"
-WORKDIR /HermesDLL_21.7.18
-RUN unzip /install/HermesDLL/HermesIntf-21.7.18.zip
+WORKDIR /skimmer_${V_SKIMMER}
+RUN unzip /install/Skimmer_${V_SKIMMER}/CwSkimmer.zip && innoextract Setup.exe
+WORKDIR /skimmersrv_${V_SKIMMERSRV}
+RUN unzip /install/SkimmerSrv_${V_SKIMMERSRV}/SkimSrv.zip && innoextract Setup.exe
+WORKDIR /rbnaggregator_${V_RBNAGGREGATOR}
+RUN unzip "/install/RBNAggregator/Aggregator v${V_RBNAGGREGATOR}.zip"
+WORKDIR /HermesDLL_${V_HERMES}
+RUN unzip /install/HermesDLL/HermesIntf-${V_HERMES}.zip
 
 WORKDIR /root/
 
@@ -75,13 +76,12 @@ ADD ./config/startup.sh /bin
 
 # Configuration stuff
 ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
-ENV PATH_INI_AGGREGATOR "/rbnaggregator_6.3/Aggregator.ini"
+ENV PATH_INI_AGGREGATOR "/rbnaggregator_${V_RBNAGGREGATOR}/Aggregator.ini"
 RUN mkdir -p $(dirname ${PATH_INI_SKIMSRV})
 COPY ./config/rbn/Aggregator.ini ${PATH_INI_AGGREGATOR}
 COPY ./config/skimsrv/SkimSrv.ini ${PATH_INI_SKIMSRV}
-#RUN cp /HermesDLL_21.7.18/HermesIntf.dll /skimmersrv_1.6/app/HermesIntf_${IP_HERMES}.dll
-RUN cp /HermesDLL_21.7.18/HermesIntf.dll /skimmersrv_1.6/app/
-RUN rm /skimmersrv_1.6/app/Qs1rIntf.dll
+RUN cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/
+RUN rm /skimmersrv_${V_SKIMMERSRV}/app/Qs1rIntf.dll
 
 ENV QTH KA12aa
 ENV NAME "Mr. X"

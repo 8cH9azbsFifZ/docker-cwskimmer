@@ -1,5 +1,11 @@
 app:
     build: .
+    environment:
+        - QTH=KA12aa
+        - NAME="Mr. X"
+        - CALLSIGN=CW0SKIM
+        - IP_HERMES=192.168.111.222
+        - SQUARE=KA12aa
     ports:
         - 8080:8080
         - 7301:7300
