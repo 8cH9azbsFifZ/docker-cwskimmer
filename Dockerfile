@@ -39,15 +39,18 @@ RUN wget -O - https://github.com/novnc/websockify/archive/v${V_WEBSOCKIFY}.tar.g
 # Configure window title
 RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /root/novnc/tmp.html && cat /root/novnc/tmp.html > /root/novnc/vnc_lite.html && rm /root/novnc/tmp.html
 
+FROM novnc AS frontail
+RUN apt-get -y install npm
+RUN npm i frontail -g
 
-FROM novnc AS installation
+FROM frontail AS installation
+RUN apt-get -y install innoextract
+
 ENV V_HERMES 21.7.18
 ENV V_SKIMMER 2.1
 ENV V_SKIMMERSRV 1.6
 ENV V_RBNAGGREGATOR 6.3
 #ENV DIR_SKIMMERSRV /skimmersrv_${V_SKIMMERSRV}/app
-
-RUN apt-get -y install innoextract
 
 # Copy installation files and extract them
 ADD install /install
@@ -84,16 +87,15 @@ RUN cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/
 RUN rm /skimmersrv_${V_SKIMMERSRV}/app/Qs1rIntf.dll
 COPY ./install/patt3ch/patt3ch.lst /skimmersrv_${V_SKIMMERSRV}/userappdata/Afreet/Reference/Patt3Ch.lst
 
+ENV LOGFILE_HERMES /root/HermesIntf_log_file.txt
+ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
+
+## Configuration
 ENV QTH KA12aa
 ENV NAME "Mr. X"
 ENV SQUARE KA12aa
 
-ENV LOGFILE_HERMES /root/HermesIntf_log_file.txt
-ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
 
-# Install frontail
-RUN apt-get -y install npm
-RUN npm i frontail -g
 
 EXPOSE 8080
 EXPOSE 7301
