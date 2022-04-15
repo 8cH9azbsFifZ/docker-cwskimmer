@@ -3,7 +3,7 @@ VER=0.8
 # Must be LOWERCASE
 USER=8ch9azbsfifz
 REPO=docker-cwskimmer
-TAG=docker.pkg.github.com/${USER}/${REPO}/cwskimmer
+TAG=ghcr.io/${USER}/${REPO}/cwskimmer
 
 build:
 	docker build . -t ${TAG}:${VER} -t ${TAG}:latest
