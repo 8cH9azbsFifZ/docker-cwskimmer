@@ -12,6 +12,8 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 ## Connecting to RTL SDR
 ![Connected to RTL SDR](doc/connected.png)
 
++ RTL SDR with hermes simulation can run in docker, too using: https://github.com/8cH9azbsFifZ/librtlsdr
+
 # References
 + https://sm7iun.se/redpitaya/cwskimmer/
 + https://github.com/k3it/HermesIntf/releases/tag/v21.7.18
