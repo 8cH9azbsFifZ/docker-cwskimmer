@@ -14,6 +14,9 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 
 + RTL SDR with hermes simulation can run in docker, too using: https://github.com/8cH9azbsFifZ/librtlsdr
 
+## Using docker-compose
++ Create a personal access token for ghcr.io, in order to pull the images
+
 # References
 + https://sm7iun.se/redpitaya/cwskimmer/
 + https://github.com/k3it/HermesIntf/releases/tag/v21.7.18
