@@ -6,4 +6,3 @@
 # Fixes
 - Configuration: no appending of previously changed acllsign and location
 - CI/CD does not run currently?
-
