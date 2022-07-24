@@ -25,6 +25,8 @@ ENV WINEPREFIX /root/prefix32
 ENV WINEARCH win32
 ENV DISPLAY :0
 
+
+RUN echo 1
 # Deps for RBNAggregator
 RUN winetricks -q dotnet46
 
