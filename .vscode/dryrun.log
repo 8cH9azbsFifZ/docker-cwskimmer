@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/gerolf.ziegenhain.dfs.de/src/docker-cwskimmer'
+docker build . -t ghcr.io/8ch9azbsfifz/docker-cwskimmer/cwskimmer:0.8 -t ghcr.io/8ch9azbsfifz/docker-cwskimmer/cwskimmer:latest
+make: Leaving directory `/Users/gerolf.ziegenhain.dfs.de/src/docker-cwskimmer'
+ 

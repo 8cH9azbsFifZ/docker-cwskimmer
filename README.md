@@ -2,6 +2,8 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 
 ![CW Skimmer](doc/example_working.png)
 
+![Overview](doc/cwskimmer.drawio.png)
+
 # Quick start
 + `make build`
 + `make run`
