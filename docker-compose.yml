@@ -2,12 +2,13 @@ version: '2.2'
 
 services:
     cwskimmer:
-        build: .
+        #build: .
+        image: ghcr.io/8ch9azbsfifz/docker-cwskimmer:latest
         environment:
             - QTH=KA12aa
             - NAME="Mr. X"
             - CALLSIGN=CW0SKIM
-            - IP_HERMES=192.168.111.222
+            - IP_HERMES=10.101.44.120
             - SQUARE=KA12aa
         ports:
             - 8080:8080
