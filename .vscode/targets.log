@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Fri Apr  7 13:21:35 2023
+# Make data base, printed on Wed Jul 31 00:12:54 2024
 
 # Variables
 
@@ -29,11 +29,11 @@ VER = 0.8
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/gerolf.ziegenhain.dfs.de/src/docker-cwskimmer
+CURDIR := /Users/gerolfziegenhain/src/docker-cwskimmer
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","osLocale":"de-de","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"de","osLocale":"de-de","availableLanguages":{"*":"de"},"_languagePackId":"45666f220758898eda45cf8c221a687e.de","_translationsConfigFile":"/Users/gerolfziegenhain/Library/Application Support/Code/clp/45666f220758898eda45cf8c221a687e.de/tcf.json","_cacheRoot":"/Users/gerolfziegenhain/Library/Application Support/Code/clp/45666f220758898eda45cf8c221a687e.de","_resolvedLanguagePackCoreLocation":"/Users/gerolfziegenhain/Library/Application Support/Code/clp/45666f220758898eda45cf8c221a687e.de/f1e16e1e6214d7c44d078b1f0607b2388f29d729","_corruptedFile":"/Users/gerolfziegenhain/Library/Application Support/Code/clp/45666f220758898eda45cf8c221a687e.de/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
@@ -41,12 +41,13 @@ MAKEFILE_LIST :=  Makefile
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
+# environment
 VSCODE_CWD = /
 # environment
-PATH = /Users/gerolf.ziegenhain.dfs.de/.docker/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/gerolf.ziegenhain.dfs.de/.docker/bin:/Users/gerolf.ziegenhain.dfs.de/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-4.1.4-2022-06-07-f86da2dee//bin
- 
+PATH = /opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin
 # environment
-LaunchInstanceID = 38227465-7487-4118-BBD1-8CAB00E008F4
+LaunchInstanceID = 8E17AFB5-F14B-4765-8D88-7A5964A6F423
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -54,27 +55,29 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 6)
 TAG = ghcr.io/${USER}/${REPO}/cwskimmer
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HZZ9dgfKNg/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.H1NKeAWBnm/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.ZK348nY0TH/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.aM63LkvLyQ/org.xquartz:0
 # environment
-PWD = /Users/gerolf.ziegenhain.dfs.de/src/docker-cwskimmer
+PWD = /Users/gerolfziegenhain/src/docker-cwskimmer
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man:
+MANPATH = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man:/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/X11/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/homebrew/share/man::
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /Users/gerolf.ziegenhain.dfs.de
+HOME = /Users/gerolfziegenhain
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/gerolf.ziegenhain.dfs.de/Library/Application Support/Code/CachedData/7f329fe6c66b0f86ae1574c2911b681ad5a45d63
+VSCODE_CODE_CACHE_PATH = /Users/gerolfziegenhain/Library/Application Support/Code/CachedData/f1e16e1e6214d7c44d078b1f0607b2388f29d729
 # environment
-LOGNAME = gerolf.ziegenhain.dfs.de
+LOGNAME = gerolfziegenhain
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
@@ -88,9 +91,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 3
-# environment
-VSCODE_CRASH_REPORTER_SANDBOXED_HINT = 1
+SHLVL = 2
 # default
 MAKE_VERSION := 3.81
 # makefile (from `Makefile', line 4)
@@ -98,7 +99,7 @@ USER = 8ch9azbsfifz
 # makefile
 .DEFAULT_GOAL := build
 # environment
-TERM_SESSION_ID = 3C057E2B-80EF-42C2-9B28-5B17D8780722
+TERM_SESSION_ID = 78214F34-FF1F-4939-91CE-10B38676FC03
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -108,11 +109,11 @@ TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/wz/msbn58w170vbkpmnwk089y1m0000gn/T/
+TMPDIR = /var/folders/w9/jhpm8_td0p74l7n44sn7t1_40000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/gerolf.ziegenhain.dfs.de/Library/Application Support/Code/1.77-main.sock
+VSCODE_IPC_HOOK = /Users/gerolfziegenhain/Library/Application Support/Code/1.91-main.sock
 # environment
 MallocNanoZone = 0
 # makefile (from `Makefile', line 5)
@@ -124,13 +125,17 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 447
+TERM_PROGRAM_VERSION = 453
 # environment
-XPC_SERVICE_NAME = 0
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.22789983.22789989
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x3
 # environment
@@ -142,13 +147,11 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a2
+SECURITYSESSIONID = 186ac
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
 # environment
@@ -156,9 +159,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 23630
+VSCODE_PID = 8566
 # variable set hash-table stats:
-# Load=71/1024=7%, Rehash=0, Collisions=1/96=1%
+# Load=73/1024=7%, Rehash=0, Collisions=1/97=1%
 
 # Pattern-specific Variable Values
 
@@ -166,9 +169,9 @@ VSCODE_PID = 23630
 
 # Directories
 
-# . (device 16777220, inode 106622720): 16 files, no impossibilities.
+# . (device 16777231, inode 23727567): 15 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -202,7 +205,7 @@ push:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-15 16:58:43
+#  Last modified 2024-07-31 00:11:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -251,6 +254,6 @@ update_patt3ch:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Apr  7 13:21:35 2023
+# Finished Make data base on Wed Jul 31 00:12:54 2024
 
  
