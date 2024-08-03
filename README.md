@@ -2,6 +2,13 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 
 ![CW Skimmer](doc/example_working.png)
 
+## Features
++ Skimmer Server
++ CWSL 
++ CWSL_DIGI
++ RBN Aggregator
++ PSK Reporter
+
 ![Overview](doc/cwskimmer.drawio.png)
 
 # Quick start

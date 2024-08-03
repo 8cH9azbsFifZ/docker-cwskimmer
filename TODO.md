@@ -1,8 +1,9 @@
 # Todo
-+ Add this Hermes DLL: https://github.com/KV4TT/HermesIntf/releases/download/V2.0/HermesIntf.dll
-+ https://github.com/HrochL/CWSL
++ finish installer  
 + Add CWSL_DIGI 
 + ADD PSK reporter
++ msiexec psk reporter
++ configure cwsl_digi
 
 
 ## Low Prio
