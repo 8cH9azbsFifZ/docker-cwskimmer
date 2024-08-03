@@ -11,6 +11,10 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 + Buy a license from: http://www.dxatlas.com/cwskimmer/ and enter the license key in CW Skimmer.
 
 
+## Ports
++ 7373 - External noVNC
+
+
 ## Connecting to RTL SDR
 ![Connected to RTL SDR](doc/connected.png)
 
@@ -23,3 +27,4 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 + https://sm7iun.se/redpitaya/cwskimmer/
 + https://github.com/k3it/HermesIntf/releases/tag/v21.7.18
 + http://www.reversebeacon.net/pages/Aggregator+34
++ Hermes DLL by https://github.com/KV4TT/HermesIntf
