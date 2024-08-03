@@ -8,5 +8,6 @@
 # Install VCRedist for CWSL_DIGI
 /usr/local/bin/winetricks -q vcrun2022
 
-cd /install/SkimmerSrv_1.6
-wine Setup.exe /SILENT
+msiexec /q /i /install/Intel_Fortran/ww_ifort_redist_intel64_2020.4.311.msi
+
+wine /install/WSJTX/wsjtx-2.6.1-win32.exe /S
