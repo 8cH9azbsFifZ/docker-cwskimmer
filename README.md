@@ -17,6 +17,9 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 + `open http://127.0.0.1:7373`
 + Buy a license from: http://www.dxatlas.com/cwskimmer/ and enter the license key in CW Skimmer.
 
+Debugging:  
++ `docker pull ghcr.io/8ch9azbsfifz/docker-cwskimmer:latest `
++ ```docker run --network host --rm -it ghcr.io/8ch9azbsfifz/docker-cwskimmer:latest  bash```
 
 ## Ports
 + 7373 - External noVNC
