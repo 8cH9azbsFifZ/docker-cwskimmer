@@ -1,5 +1,4 @@
-FROM debian:buster AS wine
-MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
+FROM debian:bookworm AS wine
 
 # Configuration variables
 ENV IP_HERMES "192.168.111.222"
@@ -12,39 +11,20 @@ ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 RUN dpkg --add-architecture i386
-RUN apt-get update && apt-get -y install xvfb x11vnc xdotool wget tar supervisor net-tools gnupg2 procps
-RUN wget -O - https://dl.winehq.org/wine-builds/winehq.key |apt-key add -
-RUN echo deb https://dl.winehq.org/wine-builds/debian/ buster main >>  /etc/apt/sources.list
+RUN apt-get update && apt-get -y install cabextract xvfb novnc x11vnc xdotool wget tar dbus-x11 supervisor net-tools gnupg2 procps wine xfce4 innoextract unzip
 # Contrib enable
-RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list
-# cf. http://ubuntuhandbook.org/index.php/2020/01/install-wine-5-0-stable-ubuntu-18-04-19-10/
-RUN apt-get update && apt-get -y install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 wine winetricks xfce4 socat pulseaudio pavucontrol
-RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
-# cf. https://wiki.winehq.org/Debian
-ENV WINEPREFIX /root/prefix32
-ENV WINEARCH win32
+#RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list
+#RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
 ENV DISPLAY :0
-
-# Deps for RBNAggregator
-RUN winetricks -q dotnet46
 
 
 FROM wine AS novnc
-ENV V_NOVNC 1.1.0
-ENV V_WEBSOCKIFY 0.9.0
-# Install noVNC stuff
-WORKDIR /root/
-RUN wget -O - https://github.com/novnc/noVNC/archive/v${V_NOVNC}.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-${V_NOVNC} /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html
-RUN wget -O - https://github.com/novnc/websockify/archive/v${V_WEBSOCKIFY}.tar.gz | tar -xzv -C /root/ && mv /root/websockify-${V_WEBSOCKIFY} /root/novnc/utils/websockify
-# Configure window title
-RUN cat /root/novnc/vnc_lite.html | sed 's/<title>noVNC/<title>CW Skimmer/g' > /root/novnc/tmp.html && cat /root/novnc/tmp.html > /root/novnc/vnc_lite.html && rm /root/novnc/tmp.html
 
 FROM novnc AS frontail
-RUN apt-get -y install npm
-RUN npm i frontail -g
+#RUN apt-get -y install npm
+#RUN npm i frontail -g
 
 FROM frontail AS installation
-RUN apt-get -y install innoextract
 
 ENV V_HERMES 21.7.18
 ENV V_SKIMMER 2.1
@@ -72,11 +52,11 @@ WORKDIR /CWSL_DIGI
 RUN cp -r /install/CWSL_DIGI/*/* .
 
 # Install more stuff for CWSL
-WORKDIR /root/prefix32/drive_c/windows/system32
+WORKDIR /root/.wine/drive_c/windows/system32
 RUN unzip -n /install/IPP70/IPP70.zip 
 
 # Install CWSL DIGI
-WORKDIR /root/prefix32/drive_c/CWSL_DIGI/
+WORKDIR /root/.wine/drive_c/CWSL_DIGI/
 RUN cp -r /install/CWSL_DIGI/*/* .
 
 # Winetricks update
@@ -85,14 +65,13 @@ RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/win
 RUN chmod +x winetricks 
 RUN mv -v winetricks /usr/local/bin
 
+# Deps for RBNAggregator
+RUN /usr/local/bin/winetricks -q dotnet46
+
 # Add late installer
 ADD ./install.sh /install
 
 WORKDIR /root/
-
-
-# Install wsjtx
-#TODO
 
 
 FROM installation as config
@@ -106,7 +85,7 @@ ADD ./config/startup.sh /bin
 ADD ./config/startup_sound.sh /bin
 
 # Configuration stuff
-ENV PATH_INI_SKIMSRV "/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
+ENV PATH_INI_SKIMSRV "/root/.wine/drive_c/users/root/Application Data/Afreet/Products/SkimSrv/SkimSrv.ini"
 ENV PATH_INI_AGGREGATOR "/rbnaggregator_${V_RBNAGGREGATOR}/Aggregator.ini"
 RUN mkdir -p $(dirname ${PATH_INI_SKIMSRV})
 COPY ./config/rbn/Aggregator.ini ${PATH_INI_AGGREGATOR}
@@ -122,7 +101,6 @@ ENV LOGIFLE_AGGREGATOR /root/AggregatorLog.txt
 ENV QTH KA12aa
 ENV NAME "Mr. X"
 ENV SQUARE KA12aa
-
 
 EXPOSE 7373
 EXPOSE 7301
