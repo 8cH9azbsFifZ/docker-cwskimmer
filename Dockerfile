@@ -73,6 +73,13 @@ RUN cp /install/CWSL/CWSL/* .
 WORKDIR /root/prefix32/drive_c/windows/system32
 RUN unzip -n /install/IPP70/IPP70.zip 
 
+# Winetricks update
+RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+RUN chmod +x winetricks 
+RUN mv -v winetricks /usr/local/bin
+
+# Install VCRedist for CWSL
+RUN /usr/local/bin/winetricks -q vcrun2010 
 
 
 WORKDIR /root/
