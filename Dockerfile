@@ -68,12 +68,19 @@ WORKDIR /HermesDLL_KV4TT
 RUN cp /install/HermesDLL/HermesIntf.dll .
 WORKDIR /CWSL
 RUN cp /install/CWSL/CWSL/* .
+WORKDIR /CWSL_DIGI
+RUN cp /install/CWSL_DIGI/CWSL_DIGI-0.88-Release/* .
 
 # Install more stuff for CWSL
 WORKDIR /root/prefix32/drive_c/windows/system32
 RUN unzip -n /install/IPP70/IPP70.zip 
 
+# Install CWSL DIGI
+WORKDIR /root/prefix32/drive_c/CWSL_DIGI/
+RUN cp /install/CWSL_DIGI/CWSL_DIGI-0.88-Release/* .
+
 # Winetricks update
+WORKDIR /root/
 RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 RUN chmod +x winetricks 
 RUN mv -v winetricks /usr/local/bin
