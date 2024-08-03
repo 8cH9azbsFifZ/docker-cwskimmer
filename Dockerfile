@@ -64,6 +64,15 @@ WORKDIR /rbnaggregator_${V_RBNAGGREGATOR}
 RUN unzip "/install/RBNAggregator/Aggregator v${V_RBNAGGREGATOR}.zip"
 WORKDIR /HermesDLL_${V_HERMES}
 RUN unzip /install/HermesDLL/HermesIntf-${V_HERMES}.zip
+WORKDIR /HermesDLL_KV4TT
+RUN cp /install/HermesDLL/HermesIntf.dll .
+WORKDIR /CWSL
+RUN cp /install/CWSL/CWSL/* .
+
+# Install more stuff
+WORKDIR /root/prefix32/drive_c/windows/system32
+RUN unzip -n /install/IPP70/IPP70.zip 
+
 
 WORKDIR /root/
 
