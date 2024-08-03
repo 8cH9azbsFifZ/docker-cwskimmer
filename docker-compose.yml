@@ -4,7 +4,7 @@ services:
     cwskimmer:
         #build: .
         image: ghcr.io/8ch9azbsfifz/docker-cwskimmer:latest
-        network_mode: "host"        
+        network_mode: host   
         environment:
             - QTH=KA12aa
             - NAME="Mr. X"
