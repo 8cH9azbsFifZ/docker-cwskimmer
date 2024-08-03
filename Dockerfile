@@ -78,9 +78,8 @@ RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/win
 RUN chmod +x winetricks 
 RUN mv -v winetricks /usr/local/bin
 
-# Install VCRedist for CWSL
-RUN /usr/local/bin/winetricks -q vcrun2010 
-
+# Add late installer
+ADD ./install.sh /install
 
 WORKDIR /root/
 

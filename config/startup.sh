@@ -1,12 +1,14 @@
 #!/bin/bash
 #set d -e 
 
+# Configure Skimmer Server
 echo "Configure Skimmer with Callsign: $CALLSIGN, QTH: $QTH, Name: $NAME, Grid: $SQUARE using $PATH_INI_SKIMSRV"
 sed -i 's/Call=/Call='$CALLSIGN'/g' "$PATH_INI_SKIMSRV"
 sed -i 's/QTH=/QTH='$QTH'/g' "$PATH_INI_SKIMSRV"
 sed -i 's/Name=/Name='$NAME'/g' "$PATH_INI_SKIMSRV"
 sed -i 's/Square=/Square='$SQUARE'/g' "$PATH_INI_SKIMSRV"
 
+# Configure RBN Aggregator
 echo "Configure RBN Aggregator with Callsign: $CALLSIGN using $PATH_INI_AGGREGATOR"
 #sed -i 's/Skimmer Call=.*/Skimmer Call='$CALLSIGN'/g' "$PATH_INI_AGGREGATOR"
 #cat "$PATH_INI_AGGREGATOR"
@@ -18,7 +20,8 @@ chmod oag-r "$PATH_INI_AGGREGATOR"
 
 
 echo "Configure Hermes DLL for ${IP_HERMES}"
-cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/HermesIntf_${IP_HERMES}.dll
+#cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/HermesIntf_${IP_HERMES}.dll
+cp /HermesDLL_KV4TT/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/HermesIntf_${IP_HERMES}.dll
 
 echo "Configure supervisor for aggregator ${V_RBNAGGREGATOR}"
 sed -i 's/6\.3/'$V_RBNAGGREGATOR'/g' /etc/supervisor/conf.d/supervisord.conf
@@ -26,6 +29,11 @@ sed -i 's/6\.3/'$V_RBNAGGREGATOR'/g' /etc/supervisor/conf.d/supervisord.conf
 echo "Configure supervisor for skimmer ${V_SKIMMERSRV}"
 sed -i 's/1\.6/'$V_SKIMMERSRV'/g' /etc/supervisor/conf.d/supervisord.conf
 
+# Configure CWSL
+echo "Configure CWSL"
+#cd "/root/prefix32/drive_c/Program Files/Afreet/SkimSrv"
+cp /CWSL/CWSL_Tee.dll /skimmersrv_${V_SKIMMERSRV}/app/
+cp /CWSL/CWSL_Tee.cfg /skimmersrv_${V_SKIMMERSRV}/app/
 
 ## Disabled: support for network sound
 
