@@ -66,7 +66,7 @@ RUN chmod +x winetricks
 RUN mv -v winetricks /usr/local/bin
 
 # Deps for RBNAggregator
-RUN /usr/local/bin/winetricks -q dotnet46
+#RUN /usr/local/bin/winetricks -q dotnet46
 
 # Add late installer
 ADD ./install.sh /install
