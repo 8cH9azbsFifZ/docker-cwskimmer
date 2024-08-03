@@ -91,6 +91,10 @@ ADD ./install.sh /install
 WORKDIR /root/
 
 
+# Install wsjtx
+#TODO
+
+
 FROM installation as config
 # FIXME: config vars here -e RIGSERVER=10.101.1.53 -e RIGSERVER_CAT_PORT=1234 -e RIGSERVER_PTT_PORT=4321 
 
