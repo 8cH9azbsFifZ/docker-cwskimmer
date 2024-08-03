@@ -7,7 +7,7 @@ Run the famous CW Skimmer under docker, using wine and novnc for remote access.
 # Quick start
 + `make build`
 + `make run`
-+ `open http://127.0.0.1:8080`
++ `open http://127.0.0.1:7373`
 + Buy a license from: http://www.dxatlas.com/cwskimmer/ and enter the license key in CW Skimmer.
 
 
