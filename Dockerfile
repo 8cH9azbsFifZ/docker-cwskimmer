@@ -69,7 +69,7 @@ RUN cp /install/HermesDLL/HermesIntf.dll .
 WORKDIR /CWSL
 RUN cp /install/CWSL/CWSL/* .
 WORKDIR /CWSL_DIGI
-RUN cp /install/CWSL_DIGI/*/* .
+RUN cp -r /install/CWSL_DIGI/*/* .
 
 # Install more stuff for CWSL
 WORKDIR /root/prefix32/drive_c/windows/system32
@@ -77,7 +77,7 @@ RUN unzip -n /install/IPP70/IPP70.zip
 
 # Install CWSL DIGI
 WORKDIR /root/prefix32/drive_c/CWSL_DIGI/
-RUN cp /install/CWSL_DIGI/*/* .
+RUN cp -r /install/CWSL_DIGI/*/* .
 
 # Winetricks update
 WORKDIR /root/
