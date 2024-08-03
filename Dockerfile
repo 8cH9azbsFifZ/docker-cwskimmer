@@ -69,9 +69,10 @@ RUN cp /install/HermesDLL/HermesIntf.dll .
 WORKDIR /CWSL
 RUN cp /install/CWSL/CWSL/* .
 
-# Install more stuff
+# Install more stuff for CWSL
 WORKDIR /root/prefix32/drive_c/windows/system32
 RUN unzip -n /install/IPP70/IPP70.zip 
+
 
 
 WORKDIR /root/
