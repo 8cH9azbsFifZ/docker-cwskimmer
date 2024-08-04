@@ -11,6 +11,7 @@ sleep 15
 WINEARCH=win32 WINEPREFIX=/root/.wine32 winecfg 
 /usr/local/bin/winetricks -q dotnet46
 
+#WINEARCH=win32 WINEPREFIX=/root/.wine32 wine /skimmersrv_1.6/Setup.exe /SILENT
 
 # Install VCRedist for CWSL
 /usr/local/bin/winetricks -q vcrun2010 
