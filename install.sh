@@ -8,6 +8,10 @@ echo "Starting installer for the 1st time"
 
 sleep 15
 
+WINEARCH=win32 WINEPREFIX=/root/.wine32 winecfg 
+/usr/local/bin/winetricks -q dotnet46
+
+
 # Install VCRedist for CWSL
 /usr/local/bin/winetricks -q vcrun2010 
 
