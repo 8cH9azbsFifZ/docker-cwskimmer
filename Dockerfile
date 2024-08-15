@@ -59,8 +59,7 @@ WORKDIR /root/.wine/drive_c/CWSL_DIGI/
 RUN cp -r /install/CWSL_DIGI/*/* .
 
 
-# Deps for RBNAggregator
-#RUN /usr/local/bin/winetricks -q dotnet46
+
 
 # Add late installer
 ADD ./install.sh /install
