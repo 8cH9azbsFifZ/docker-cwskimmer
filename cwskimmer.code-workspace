@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"makefile.extensionOutputFolder": "./.vscode"
+		"makefile.extensionOutputFolder": "./.vscode",
+		"makefile.configureOnOpen": false
 	}
 }
