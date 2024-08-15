@@ -23,6 +23,9 @@ RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/win
 RUN chmod +x winetricks 
 RUN mv -v winetricks /usr/local/bin
 
+# Deps for RBNAggregator
+RUN /usr/local/bin/winetricks -q dotnet46
+
 FROM wine AS installation
 
 ENV V_HERMES 21.7.18
