@@ -17,14 +17,16 @@ RUN apt-get update && apt-get -y install cabextract xvfb novnc x11vnc xdotool wg
 #RUN apt-get -qqy autoclean && rm -rf /tmp/* /var/tmp/*
 ENV DISPLAY :0
 
+# Winetricks update
+WORKDIR /root/
+RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+RUN chmod +x winetricks 
+RUN mv -v winetricks /usr/local/bin
 
-FROM wine AS novnc
+# Deps for RBNAggregator
+RUN /usr/local/bin/winetricks -q dotnet46
 
-FROM novnc AS frontail
-#RUN apt-get -y install npm
-#RUN npm i frontail -g
-
-FROM frontail AS installation
+FROM wine AS installation
 
 ENV V_HERMES 21.7.18
 ENV V_SKIMMER 2.1
@@ -59,14 +61,8 @@ RUN unzip -n /install/IPP70/IPP70.zip
 WORKDIR /root/.wine/drive_c/CWSL_DIGI/
 RUN cp -r /install/CWSL_DIGI/*/* .
 
-# Winetricks update
-WORKDIR /root/
-RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-RUN chmod +x winetricks 
-RUN mv -v winetricks /usr/local/bin
 
-# Deps for RBNAggregator
-#RUN /usr/local/bin/winetricks -q dotnet46
+
 
 # Add late installer
 ADD ./install.sh /install

@@ -21,6 +21,8 @@ WINEARCH=win32 WINEPREFIX=/root/.wine32 winecfg
 
 msiexec /q /i /install/Intel_Fortran/ww_ifort_redist_intel64_2020.4.311.msi
 
+msiexec /q /i /install/pskreporter/CWReporter.msi
+
 wine /install/WSJTX/wsjtx-2.6.1-win32.exe /S
 
 echo "Installer done for the 1st time"

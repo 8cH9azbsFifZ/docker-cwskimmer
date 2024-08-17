@@ -4,7 +4,7 @@ services:
     cwskimmer:
         #build: .
         image: ghcr.io/8ch9azbsfifz/docker-cwskimmer:latest
-        network_mode: host   
+        #network_mode: host   
         privileged: true
 
         environment:
@@ -13,7 +13,7 @@ services:
             - CALLSIGN=CW0SKIM
             - IP_HERMES=10.101.44.120
             - SQUARE=KA12aa
-        #ports:
-        #    - 8080:8080
+        ports:
+            - 7373:7373
         #    - 7301:7300
         #    - 9001:9001
